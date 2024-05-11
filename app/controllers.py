@@ -5,12 +5,6 @@ from datetime import datetime, timedelta
 from werkzeug.security import generate_password_hash
 
 # User management controllers
-# def create_user_controller(request):
-#     data = request.json
-#     new_user = User(username=data['username'], password_hash=data['password_hash'], role=data['role'])
-#     db.session.add(new_user)
-#     db.session.commit()
-#     return jsonify({"message": "User created successfully"}), 201
 def create_user_controller(request):
     data = request.json
     username = data.get('username')

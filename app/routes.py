@@ -31,7 +31,7 @@ def protected():
     return jsonify(logged_in_as=current_user), 200
 
 @app.route('/api/users', methods=['POST'])
-@jwt_required()
+# @jwt_required()
 def create_user():
     return create_user_controller(request)
 
