@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borrowing/Returning</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Library Management System</a>
+            <!-- Add more navigation options here if needed -->
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h1>Borrowing/Returning</h1>
+
+        <!-- Borrowed Books Section -->
+        <div class="card mb-3">
+            <div class="card-header">
+                Borrowed Books
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Due Date</th>
+                            <th>Return</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Book 1</td>
+                            <td>Author 1</td>
+                            <td>2024-04-10</td>
+                            <td>
+                                <button type="button" class="btn btn-primary">Return</button>
+                            </td>
+                        </tr>
+                        <!-- Add more rows for other borrowed books -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Return Form -->
+        <div class="card mb-3">
+            <div class="card-header">
+                Return Book
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="inputBorrowedBookId" class="form-label">Borrowed Book ID</label>
+                        <input type="text" class="form-control" id="inputBorrowedBookId">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Return Book</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Borrow Form -->
+        <div class="card mb-3">
+            <div class="card-header">
+                Borrow Book
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="inputBookId" class="form-label">Book ID</label>
+                        <input type="text" class="form-control" id="inputBookId">
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputUserId" class="form-label">User ID</label>
+                        <input type="text" class="form-control" id="inputUserId">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Borrow Book</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bootstrap JS Bundle (Popper.js included) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
