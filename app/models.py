@@ -3,11 +3,10 @@ from app import db
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50), unique=True, nullable=False)
-    password_hash = db.Column(db.String(128), nullable=False)
+    password_hash = db.Column(db.String(256), nullable=False)
     role = db.Column(db.String(20), nullable=False)  # 'owner' or 'user'
 
-    def __init__(self, id, username, password_hash, role):
-        self.id = id
+    def __init__(self, username, password_hash, role):
         self.username = username
         self.password_hash = password_hash
         self.role = role
@@ -26,6 +25,24 @@ class Book(db.Model):
     availability = db.Column(db.Boolean, nullable=False, default=True)
     copies_available = db.Column(db.Integer, nullable=False)
     total_copies = db.Column(db.Integer, nullable=False)
+
+    # def __init__(self, id, title, genre, availability, copies_available, total_copies):
+    #     self.id = id
+    #     self.title = title
+    #     self.genre = genre
+    #     self.availability = availability
+    #     self.copies_available = copies_available
+    #     self.total_copies = total_copies
+
+    # def serialize(self):
+    #     return {
+    #         self.id = id
+    #         self.title = title
+    #         self.genre = genre
+    #         self.availability = availability
+    #         self.copies_available = copies_available
+    #         self.total_copies = total_copies
+    #     }
 
 class BorrowedBook(db.Model):
     id = db.Column(db.Integer, primary_key=True)

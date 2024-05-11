@@ -2,13 +2,34 @@ from flask import jsonify, request
 from app import db
 from app.models import User, Book, BorrowedBook
 from datetime import datetime, timedelta
+from werkzeug.security import generate_password_hash
 
 # User management controllers
+# def create_user_controller(request):
+#     data = request.json
+#     new_user = User(username=data['username'], password_hash=data['password_hash'], role=data['role'])
+#     db.session.add(new_user)
+#     db.session.commit()
+#     return jsonify({"message": "User created successfully"}), 201
 def create_user_controller(request):
     data = request.json
-    new_user = User(username=data['username'], password_hash=data['password_hash'], role=data['role'])
+    username = data.get('username')
+    password = data.get('password_hash')  # Assuming you're passing hashed password from client
+    role = data.get('role')
+
+    # Check if username already exists
+    existing_user = User.query.filter_by(username=username).first()
+    if existing_user:
+        return jsonify({"message": "Username already exists"}), 400
+
+    # Hash the password
+    password_hash = generate_password_hash(password)
+
+    # Create and add user to the database
+    new_user = User(username=username, password_hash=password_hash, role=role)
     db.session.add(new_user)
     db.session.commit()
+
     return jsonify({"message": "User created successfully"}), 201
 
 def get_user_controller(user_id):
