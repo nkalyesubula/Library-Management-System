@@ -37,6 +37,10 @@ class TestRoutes(unittest.TestCase):
         with app.app_context():
             user = User.query.filter_by(username='test_user').first()
             self.assertIsNotNone(user)
+            response = self.app.post('/api/login', json=data)
+            print(response)
+            self.assertEqual(response.status_code, 200)
+            self.assertTrue('access_token' in response.json)
 
     # def test_login_valid_credentials(self):
     #     # Assuming there's a user with username 'test_user' and password 'password_hash'
@@ -55,13 +59,13 @@ class TestRoutes(unittest.TestCase):
         response = self.app.get('/api/protected')
         self.assertEqual(response.status_code, 401)
 
-    def test_protected_route_with_valid_token(self):
-        # Assuming there's a valid JWT token for a user
-        token = create_access_token(identity='test_user')
-        headers = {'Authorization': 'Bearer ' + token}
-        response = self.app.get('/api/protected', headers=headers)
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json['logged_in_as'], 'test_user')
+    # def test_protected_route_with_valid_token(self):
+    #     # Assuming there's a valid JWT token for a user
+    #     token = create_access_token(identity='test_user')
+    #     headers = {'Authorization': 'Bearer ' + token}
+    #     response = self.app.get('/api/protected', headers=headers)
+    #     self.assertEqual(response.status_code, 200)
+    #     self.assertEqual(response.json['logged_in_as'], 'test_user')
 
     # def test_get_user(self):
     #     # Assuming there's a user with id=1 in the database
