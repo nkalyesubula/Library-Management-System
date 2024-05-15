@@ -42,13 +42,13 @@ class TestRoutes(unittest.TestCase):
             self.assertEqual(response.status_code, 200)
             self.assertTrue('access_token' in response.json)
 
-    # def test_login_valid_credentials(self):
-    #     # Assuming there's a user with username 'test_user' and password 'password_hash'
-    #     data = {'username': 'test_user', 'password_hash': 'password'}
-    #     response = self.app.post('/api/login', json=data)
-    #     print(response)
-    #     self.assertEqual(response.status_code, 200)
-    #     self.assertTrue('access_token' in response.json)
+    def test_login_valid_credentials(self):
+        # Assuming there's a user with username 'test_user' and password 'password_hash'
+        data = {'username': 'test_user', 'password_hash': 'password'}
+        response = self.app.post('/api/login', json=data)
+        print(response)
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue('access_token' in response.json)
 
     def test_login_invalid_credentials(self):
         data = {'username': 'nonexistent_user', 'password_hash': 'wrong_password'}
