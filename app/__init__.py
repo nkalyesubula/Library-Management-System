@@ -11,6 +11,7 @@ app.config.from_object(Config)
 CORS(app)
 
 # Initialize SQLAlchemy
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://koyeb-adm:Ivcu0b8YqiVs@ep-frosty-cherry-a2w8eegd.eu-central-1.pg.koyeb.app/koyebdb'
 db = SQLAlchemy(app)
 
 # Initialize JWT
